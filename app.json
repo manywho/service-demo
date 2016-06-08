@@ -1,0 +1,7 @@
+{
+  "name": "ManyWho Demo Service",
+  "description": "A plugin that enable demoing of service integrations into ManyWho Flows",
+  "repository": "https://github.com/manywho/service-demo",
+  "logo": "https://s3.amazonaws.com/manywho-service-assets/icons/service-demo.png",
+  "keywords": ["manywho", "demo", "plugin", "workflow"]
+}
