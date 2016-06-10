@@ -9,7 +9,7 @@ public class Group implements Type {
     @Type.Identifier
     private String id;
 
-    @Type.Property(name = "Name", contentType = ContentType.String)
+    @Type.Property(name = "Name", contentType = ContentType.String, bound = false)
     private String name;
 
     public Group(String id, String name) {
