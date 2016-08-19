@@ -5,6 +5,9 @@ import com.manywho.sdk.services.ServiceApplication;
 import com.manywho.services.demo.providers.Sql2oProvider;
 import org.sql2o.Sql2o;
 
+import javax.ws.rs.ApplicationPath;
+
+@ApplicationPath("/")
 public class Application extends ServiceApplication {
     public static void main(String[] args) throws Exception {
         Application application = new Application();
