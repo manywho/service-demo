@@ -21,6 +21,6 @@ public class Application extends ServiceApplication {
     public static void main(String[] args) throws Exception {
         Application application = new Application();
         application.setModule(new ApplicationModule());
-        application.startServer();
+        application.startServer("/api/demo/1");
     }
 }
