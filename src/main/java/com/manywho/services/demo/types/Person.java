@@ -8,7 +8,9 @@ import java.util.List;
 
 @Type.Element(name = "Person", summary = "A description of a person")
 public class Person implements Type {
+
     @Type.Identifier
+    @Type.Property(name = "ID", contentType = ContentType.String)
     private String id;
 
     @Type.Property(name = "Name", contentType = ContentType.String)
@@ -28,9 +30,6 @@ public class Person implements Type {
 
     @Type.Property(name = "Groups", contentType = ContentType.List)
     private List<Group> groups;
-
-    @Type.Property(name = "Manager", contentType = ContentType.Object)
-    private Person manager;
 
     @Type.Property(name = "Is Active?", contentType = ContentType.Boolean)
     private boolean active;
@@ -92,14 +91,6 @@ public class Person implements Type {
 
     public void setGroups(List<Group> groups) {
         this.groups = groups;
-    }
-
-    public Person getManager() {
-        return manager;
-    }
-
-    public void setManager(Person manager) {
-        this.manager = manager;
     }
 
     public boolean isActive() {
