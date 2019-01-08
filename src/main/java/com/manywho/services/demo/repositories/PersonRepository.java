@@ -23,7 +23,6 @@ public class PersonRepository {
             return connection.createQuery(sql)
                     .addParameter("id", id)
                     .addColumnMapping("created_at", "createdAt")
-                    .addColumnMapping("social_security_number", "socialSecurityNumber")
                     .executeAndFetchFirst(Person.class);
         }
     }
@@ -34,7 +33,6 @@ public class PersonRepository {
         try (Connection connection = sql2o.open()) {
             return connection.createQuery(sql)
                     .addColumnMapping("created_at", "createdAt")
-                    .addColumnMapping("social_security_number", "socialSecurityNumber")
                     .executeAndFetch(Person.class);
         }
     }
@@ -53,5 +51,33 @@ public class PersonRepository {
         }
 
         return person;
+    }
+
+    public Person create(Person person) {
+        String sql = "INSERT INTO people (name, biography, age, active) VALUES (:name, :biography, :age, :active)";
+
+        try (Connection connection = sql2o.open()) {
+            int newPersonId = connection.createQuery(sql)
+                    .addParameter("name", person.getName())
+                    .addParameter("biography", person.getBiography())
+                    .addParameter("age", person.getAge())
+                    .addParameter("active", person.isActive())
+                    .executeUpdate()
+                    .getResult();
+
+            person.setId("" + newPersonId);
+        }
+
+        return person;
+    }
+
+    public void delete(String id) {
+        String sql = "DELETE FROM people WHERE id = :id";
+
+        try (Connection connection = sql2o.open()) {
+            connection.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        }
     }
 }

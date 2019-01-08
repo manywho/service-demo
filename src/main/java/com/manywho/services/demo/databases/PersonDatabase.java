@@ -8,6 +8,7 @@ import com.manywho.services.demo.types.Person;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PersonDatabase implements Database<ApplicationConfiguration, Person> {
     private final PersonRepository repositoryDatabase;
@@ -19,22 +20,24 @@ public class PersonDatabase implements Database<ApplicationConfiguration, Person
 
     @Override
     public Person create(ApplicationConfiguration configuration, Person person) {
-        return null;
+        return repositoryDatabase.create(person);
     }
 
     @Override
     public List<Person> create(ApplicationConfiguration configuration, List<Person> list) {
-        return null;
+        return list.stream()
+                .map(repositoryDatabase::create)
+                .collect(Collectors.toList());
     }
 
     @Override
     public void delete(ApplicationConfiguration configuration, Person person) {
-
+        repositoryDatabase.delete(person.getId());
     }
 
     @Override
     public void delete(ApplicationConfiguration configuration, List<Person> list) {
-
+        list.forEach(person -> repositoryDatabase.delete(person.getId()));
     }
 
     @Override
@@ -44,7 +47,9 @@ public class PersonDatabase implements Database<ApplicationConfiguration, Person
 
     @Override
     public List<Person> update(ApplicationConfiguration configuration, List<Person> list) {
-        return null;
+        return list.stream()
+                .map(repositoryDatabase::update)
+                .collect(Collectors.toList());
     }
 
     @Override
