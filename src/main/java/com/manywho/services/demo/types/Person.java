@@ -25,6 +25,9 @@ public class Person implements Type {
     @Type.Property(name = "Password", contentType = ContentType.Password)
     private String password;
 
+    @Type.Property(name = "Groups", contentType = ContentType.List)
+    private List<Group> groups;
+
     @Type.Property(name = "Is Active?", contentType = ContentType.Boolean)
     private boolean active;
 
@@ -69,6 +72,14 @@ public class Person implements Type {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 
     public boolean isActive() {
