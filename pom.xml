@@ -19,6 +19,11 @@
             <artifactId>sdk-server-undertow</artifactId>
             <version>2.0.0-beta-08</version>
         </dependency>
+        <dependency>
+            <groupId>com.manywho.sdk</groupId>
+            <artifactId>sdk-server-servlet3</artifactId>
+            <version>2.0.0-beta-08</version>
+        </dependency>
 
         <dependency>
             <groupId>org.sql2o</groupId>
